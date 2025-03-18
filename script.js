@@ -1,11 +1,54 @@
-//complete this code
-class Animal {}
+// Animal class
+class Animal {
+    constructor(species) {
+        this._species = species; // Use a private variable convention (_species)
+    }
 
-class Dog extends Animal {}
+    // Getter for species
+    get species() {
+        return this._species;
+    }
 
-class Cat extends Animal {}
+    // Method to log the animal's sound
+    makeSound() {
+        console.log(`The ${this._species} makes a sound`);
+    }
+}
 
-// Do not change the code below this line
+// Cat class inheriting from Animal
+class Cat extends Animal {
+    constructor(species) {
+        super(species); // Call parent constructor
+    }
+
+    // Cat-specific method
+    purr() {
+        console.log("purr");
+    }
+}
+
+// Dog class inheriting from Animal
+class Dog extends Animal {
+    constructor(species) {
+        super(species); // Call parent constructor
+    }
+
+    // Dog-specific method
+    bark() {
+        console.log("woof");
+    }
+}
+
+// Example usage
+const myCat = new Cat("Siamese");
+myCat.makeSound(); // Output: The Siamese makes a sound
+myCat.purr();      // Output: purr
+
+const myDog = new Dog("Golden Retriever");
+myDog.makeSound(); // Output: The Golden Retriever makes a sound
+myDog.bark();      // Output: woof
+
+// Expose classes for Cypress testing
 window.Animal = Animal;
-window.Dog = Dog;
 window.Cat = Cat;
+window.Dog = Dog;
